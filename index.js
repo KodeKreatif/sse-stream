@@ -38,8 +38,8 @@ function SSE(opts){
 
 SSE.prototype._transform = function(chunk, _, done){
   if (this.first) {
-    if (this.id && 'function' == typeof id) this.push('id: ' + this.id() + '\n');
     if (this.retry) this.push('retry: ' + this.retry + '\n');
+    if (this.id && 'function' == typeof this.id) this.push('id: ' + this.id() + '\n');
     this.first = false;
   }
   

@@ -33,10 +33,12 @@ function SSE(opts){
   this._writableState.objectMode = true;
   this.first = true;
   this.retry = opts.retry;
+  this.id = opts.id;
 }
 
 SSE.prototype._transform = function(chunk, _, done){
   if (this.first) {
+    if (this.id && 'function' == typeof id) this.push('id: ' + this.id() + '\n');
     if (this.retry) this.push('retry: ' + this.retry + '\n');
     this.first = false;
   }
